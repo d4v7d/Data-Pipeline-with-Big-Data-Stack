@@ -1,0 +1,57 @@
+{
+  "type": "kafka",
+  "spec": {
+    "ioConfig": {
+      "type": "kafka",
+      "consumerProperties": {
+        "bootstrap.servers": "kafka:9092"
+      },
+      "topic": "real_crypto_prices",
+      "inputFormat": {
+        "type": "json"
+      },
+      "useEarliestOffset": true
+    },
+    "tuningConfig": {
+      "type": "kafka",
+      "maxRowsPerSegment": 5000000
+    },
+    "dataSchema": {
+      "dataSource": "real_crypto_datasource",
+      "timestampSpec": {
+        "column": "timestamp",
+        "format": "posix"
+      },
+      "dimensionsSpec": {
+        "dimensions": [
+          {
+            "type": "string",
+            "name": "coin_id"
+          },
+          {
+            "type": "string",
+            "name": "source"
+          },
+          {
+            "type": "double",
+            "name": "price_usd"
+          },
+          {
+            "type": "long",
+            "name": "market_cap"
+          },
+          {
+            "type": "double",
+            "name": "change_24h"
+          }
+        ]
+      },
+      "granularitySpec": {
+        "type": "uniform",
+        "segmentGranularity": "HOUR",
+        "queryGranularity": "MINUTE",
+        "rollup": false
+      }
+    }
+  }
+}

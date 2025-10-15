@@ -1,0 +1,85 @@
+{
+  "type": "kafka",
+  "spec": {
+    "ioConfig": {
+      "type": "kafka",
+      "consumerProperties": {
+        "bootstrap.servers": "kafka:9092"
+      },
+      "topic": "goes_satellite_data",
+      "inputFormat": {
+        "type": "json"
+      },
+      "useEarliestOffset": true
+    },
+    "tuningConfig": {
+      "type": "kafka",
+      "maxRowsPerSegment": 1000000
+    },
+    "dataSchema": {
+      "dataSource": "goes_satellite_datasource",
+      "timestampSpec": {
+        "column": "time",
+        "format": "posix"
+      },
+      "dimensionsSpec": {
+        "dimensions": [
+          {
+            "type": "string",
+            "name": "product_time"
+          },
+          {
+            "type": "string",
+            "name": "solar_array_current_channel_index_label"
+          },
+          {
+            "type": "string",
+            "name": "source_file"
+          },
+          {
+            "type": "double",
+            "name": "irradiance_xrsa1"
+          },
+          {
+            "type": "double",
+            "name": "irradiance_xrsa2"
+          },
+          {
+            "type": "double",
+            "name": "irradiance_xrsb1"
+          },
+          {
+            "type": "double",
+            "name": "irradiance_xrsb2"
+          },
+          {
+            "type": "double",
+            "name": "primary_xrsb"
+          },
+          {
+            "type": "double",
+            "name": "dispersion_angle"
+          },
+          {
+            "type": "double",
+            "name": "integration_time"
+          },
+          {
+            "type": "long",
+            "name": "extraction_timestamp"
+          },
+          {
+            "type": "double",
+            "name": "file_size_mb"
+          }
+        ]
+      },
+      "granularitySpec": {
+        "type": "uniform",
+        "segmentGranularity": "DAY",
+        "queryGranularity": "MINUTE",
+        "rollup": false
+      }
+    }
+  }
+}

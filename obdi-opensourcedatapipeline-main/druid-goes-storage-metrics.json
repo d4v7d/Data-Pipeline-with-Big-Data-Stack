@@ -1,0 +1,69 @@
+{
+  "type": "kafka",
+  "spec": {
+    "ioConfig": {
+      "type": "kafka",
+      "consumerProperties": {
+        "bootstrap.servers": "kafka:9092"
+      },
+      "topic": "goes_storage_metrics",
+      "inputFormat": {
+        "type": "json"
+      },
+      "useEarliestOffset": true
+    },
+    "tuningConfig": {
+      "type": "kafka",
+      "maxRowsPerSegment": 100000
+    },
+    "dataSchema": {
+      "dataSource": "goes_storage_metrics",
+      "timestampSpec": {
+        "column": "timestamp",
+        "format": "posix"
+      },
+      "dimensionsSpec": {
+        "dimensions": [
+          {
+            "type": "long",
+            "name": "current_files_processed"
+          },
+          {
+            "type": "double",
+            "name": "current_storage_mb"
+          },
+          {
+            "type": "double",
+            "name": "projected_daily_growth_mb"
+          },
+          {
+            "type": "double",
+            "name": "projected_weekly_growth_mb"
+          },
+          {
+            "type": "double",
+            "name": "projected_monthly_growth_mb"
+          },
+          {
+            "type": "double",
+            "name": "projected_daily_growth_gb"
+          },
+          {
+            "type": "double",
+            "name": "projected_weekly_growth_gb"
+          },
+          {
+            "type": "double",
+            "name": "projected_monthly_growth_gb"
+          }
+        ]
+      },
+      "granularitySpec": {
+        "type": "uniform",
+        "segmentGranularity": "DAY",
+        "queryGranularity": "HOUR",
+        "rollup": false
+      }
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "source": {
+    "type": "kafka",
+    "serviceName": "kafka_source",
+    "serviceConnection": {
+      "config": {
+        "type": "Kafka",
+        "bootstrapServers": "kafka:9092",
+        "schemaRegistryURL": ""
+      }
+    },
+    "sourceConfig": {
+      "config": {
+        "type": "MessagingMetadata",
+        "topicFilterPattern": {
+          "includes": ["demo", "spark_analytics", "real_crypto_prices", "goes_satellite_data", "goes_storage_metrics"]
+        }
+      }
+    }
+  },
+  "sink": {
+    "type": "metadata-rest",
+    "config": {
+      "protocol": "http",
+      "host": "openmetadata",
+      "port": 8585
+    }
+  },
+  "workflowConfig": {
+    "openMetadataServerConfig": {
+      "hostPort": "http://openmetadata:8585/api",
+      "authProvider": "openmetadata"
+    }
+  }
+}

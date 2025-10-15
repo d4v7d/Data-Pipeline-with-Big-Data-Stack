@@ -1,0 +1,65 @@
+{
+  "type": "kafka",
+  "spec": {
+    "ioConfig": {
+      "type": "kafka",
+      "consumerProperties": {
+        "bootstrap.servers": "kafka:9092"
+      },
+      "topic": "spark_analytics",
+      "inputFormat": {
+        "type": "json"
+      },
+      "useEarliestOffset": true
+    },
+    "tuningConfig": {
+      "type": "kafka",
+      "maxRowsPerSegment": 5000000
+    },
+    "dataSchema": {
+      "dataSource": "spark_analytics_datasource",
+      "timestampSpec": {
+        "column": "timestamp",
+        "format": "posix"
+      },
+      "dimensionsSpec": {
+        "dimensions": [
+          {
+            "type": "string",
+            "name": "session_id"
+          },
+          {
+            "type": "long",
+            "name": "user_id"
+          },
+          {
+            "type": "long",
+            "name": "page_views"
+          },
+          {
+            "type": "long",
+            "name": "time_spent_minutes"
+          },
+          {
+            "type": "string",
+            "name": "device_type"
+          },
+          {
+            "type": "string",
+            "name": "country"
+          },
+          {
+            "type": "double",
+            "name": "revenue"
+          }
+        ]
+      },
+      "granularitySpec": {
+        "type": "uniform",
+        "segmentGranularity": "HOUR",
+        "queryGranularity": "MINUTE",
+        "rollup": false
+      }
+    }
+  }
+}

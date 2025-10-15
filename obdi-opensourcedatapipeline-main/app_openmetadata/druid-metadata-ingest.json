@@ -1,0 +1,34 @@
+{
+  "source": {
+    "type": "druid",
+    "serviceName": "druid_source",
+    "serviceConnection": {
+      "config": {
+        "type": "Druid",
+        "hostPort": "coordinator:8081",
+        "username": "druid",
+        "password": "FoolishPassword",
+        "database": "druid"
+      }
+    },
+    "sourceConfig": {
+      "config": {
+        "type": "DatabaseMetadata"
+      }
+    }
+  },
+  "sink": {
+    "type": "metadata-rest",
+    "config": {
+      "protocol": "http",
+      "host": "openmetadata",
+      "port": 8585
+    }
+  },
+  "workflowConfig": {
+    "openMetadataServerConfig": {
+      "hostPort": "http://openmetadata:8585/api",
+      "authProvider": "openmetadata"
+    }
+  }
+}

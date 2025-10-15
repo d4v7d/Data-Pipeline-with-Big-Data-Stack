@@ -1,0 +1,61 @@
+{
+  "type": "kafka",
+  "spec": {
+    "ioConfig": {
+      "type": "kafka",
+      "consumerProperties": {
+        "bootstrap.servers": "kafka:9092"
+      },
+      "topic": "weather_data",
+      "inputFormat": {
+        "type": "json"
+      },
+      "useEarliestOffset": true
+    },
+    "tuningConfig": {
+      "type": "kafka",
+      "maxRowsPerSegment": 5000000
+    },
+    "dataSchema": {
+      "dataSource": "weather_datasource",
+      "timestampSpec": {
+        "column": "timestamp",
+        "format": "posix"
+      },
+      "dimensionsSpec": {
+        "dimensions": [
+          {
+            "type": "string",
+            "name": "city"
+          },
+          {
+            "type": "string",
+            "name": "weather"
+          },
+          {
+            "type": "double",
+            "name": "temperature"
+          },
+          {
+            "type": "long",
+            "name": "humidity"
+          },
+          {
+            "type": "double",
+            "name": "pressure"
+          },
+          {
+            "type": "double",
+            "name": "wind_speed"
+          }
+        ]
+      },
+      "granularitySpec": {
+        "type": "uniform",
+        "segmentGranularity": "HOUR",
+        "queryGranularity": "MINUTE",
+        "rollup": false
+      }
+    }
+  }
+}

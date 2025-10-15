@@ -1,0 +1,35 @@
+{
+  "source": {
+    "type": "superset",
+    "serviceName": "superset_source",
+    "serviceConnection": {
+      "config": {
+        "type": "Superset",
+        "hostPort": "http://superset:8088",
+        "username": "admin",
+        "password": "admin",
+        "provider": "db"
+      }
+    },
+    "sourceConfig": {
+      "config": {
+        "type": "DashboardMetadata",
+        "includeOwners": true
+      }
+    }
+  },
+  "sink": {
+    "type": "metadata-rest",
+    "config": {
+      "protocol": "http",
+      "host": "openmetadata",
+      "port": 8585
+    }
+  },
+  "workflowConfig": {
+    "openMetadataServerConfig": {
+      "hostPort": "http://openmetadata:8585/api",
+      "authProvider": "openmetadata"
+    }
+  }
+}
