@@ -86,8 +86,7 @@ A comprehensive real-time data pipeline implementation designed to process satel
 
 1. **Clone the Repository**
    ```bash
-   git clone https://github.com/BrandonTrigueros/Real-Time-Data-Pipeline-with-Modern-Big-Data-Stack.git
-   cd Real-Time-Data-Pipeline-with-Modern-Big-Data-Stack/obdi-opensourcedatapipeline-main
+   git clone https://github.com/d4v7d/Data-Pipeline-with-Big-Data-Stack.git
    ```
 
 2. **Start the Pipeline**
@@ -368,13 +367,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Contact
 
-**Brandon Trigueros**
-- GitHub: [@BrandonTrigueros](https://github.com/BrandonTrigueros)
-- LinkedIn: [Brandon Trigueros](https://linkedin.com/in/brandontrigueros)
-- Email: brandon.trigueros@example.com
+**David Gonzalez Villanueva**
+- GitHub: [@d4v7d](https://github.com/d4v7d)
+- LinkedIn: [David GV](www.linkedin.com/in/david-gonzález-villanueva-413969169)
+- Email: davidgonzav2003@gmail.com
 
 ---
-
-⭐ **If you found this project helpful, please give it a star!** ⭐
-
-*Built with ❤️ for the data engineering community*
