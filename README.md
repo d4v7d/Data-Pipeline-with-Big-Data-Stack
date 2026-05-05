@@ -24,13 +24,13 @@ A comprehensive real-time data pipeline implementation designed to process satel
 ## 🏗️ Architecture
 
 ```
-┌─────────────┐    ┌──────────────┐    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐
-│    CITIC    │───▶│   Airflow    │───▶│    Kafka    │───▶│    Druid    │───▶│  Superset   │
-│   NetCDF    │    │   (ETL/DAG)  │    │ (Streaming) │    │ (Storage)   │    │(Visualization)│
-└─────────────┘    └──────────────┘    └─────────────┘    └─────────────┘    └─────────────┘
-        │                  │                   │                   │                   │
-        │                  ▼                   ▼                   ▼                   ▼
-    External APIs     Workflow Mgmt      Message Queue      Analytics DB        BI & Dashboards
+┌─────────────┐     ┌──────────────┐     ┌─────────────┐     ┌─────────────┐    ┌───────────────┐
+│    CITIC    │───▶ │   Airflow    │───▶│    Kafka    │───▶│    Druid    │───▶│  Superset     │
+│   NetCDF    │     │   (ETL/DAG)  │     │ (Streaming) │     │ (Storage)   │    │(Visualization)│
+└─────────────┘     └──────────────┘     └─────────────┘     └─────────────┘    └───────────────┘
+        │                   │                   │                   │                   │
+        │                   ▼                   ▼                   ▼                   ▼
+    External APIs      Workflow Mgmt      Message Queue       Analytics DB        BI & Dashboards
 ```
 
 ### Core Components
